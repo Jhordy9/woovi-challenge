@@ -1,0 +1,48 @@
+{
+  "name": "woovi-challenge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start:server": "ts-node-dev --respawn --transpile-only src/server/index.ts",
+    "build:server": "tsc -p tsconfig.json",
+    "start:client": "turbopack serve --config turbopack.config.js",
+    "build:client": "turbopack build --config turbopack.config.js",
+    "start": "concurrently \"npm run start-server\" \"npm run start-client\"",
+    "build": "npm run build-server && npm run build-client"
+  },
+  "dependencies": {
+    "@graphql-tools/load": "^7.8.13",
+    "apollo-server-koa": "^3.12.0",
+    "graphql": "^16.6.0",
+    "graphql-tag": "^2.12.6",
+    "graphql-tools": "^8.3.19",
+    "koa": "^2.14.1",
+    "koa-bodyparser": "^4.4.0",
+    "koa-router": "^12.0.0",
+    "mongodb": "^5.2.0",
+    "mongoose": "^7.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-relay": "^15.0.0",
+    "relay-runtime": "^15.0.0"
+  },
+  "devDependencies": {
+    "@graphql-tools/graphql-file-loader": "^7.5.16",
+    "@graphql-tools/load-files": "^6.6.1",
+    "@graphql-tools/merge": "^8.4.0",
+    "@graphql-tools/schema": "^9.0.17",
+    "@types/koa-router": "^7.4.4",
+    "@types/mongodb": "^4.0.7",
+    "@types/node": "^18.15.11",
+    "@types/react": "^18.0.33",
+    "@types/react-dom": "^18.0.11",
+    "babel-plugin-relay": "^15.0.0",
+    "concurrently": "^8.0.1",
+    "relay-compiler": "^15.0.0",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "turbopack": "^0.0.1",
+    "typescript": "^5.0.3"
+  }
+}
