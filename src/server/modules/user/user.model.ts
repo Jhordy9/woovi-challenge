@@ -5,6 +5,7 @@ const UserSchema = new Schema<UserDocument>({
   friendlyId: String,
   username: String,
   age: Number,
+  password: String,
 });
 
 const UserModel = model<UserDocument>('User', UserSchema);

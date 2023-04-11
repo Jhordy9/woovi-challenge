@@ -1,6 +1,7 @@
 import { IResolvers } from '@graphql-tools/utils';
 import { UserDocument } from './user.interface';
 import UserModel from './user.model';
+import bcrypt from 'bcrypt';
 
 const resolvers: IResolvers = {
   Query: {
@@ -17,9 +18,14 @@ const resolvers: IResolvers = {
     },
   },
   Mutation: {
-    createUser: async (_: any, args: { username: string; age: number }) => {
-      const { username, age } = args;
-      const user = new UserModel({ username, age });
+    createUser: async (
+      _: any,
+      args: { username: string; age: number; password: string }
+    ) => {
+      const { username, age, password } = args;
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(password, salt);
+      const user = new UserModel({ username, age, password: hashedPassword });
       await user.save();
       return user;
     },

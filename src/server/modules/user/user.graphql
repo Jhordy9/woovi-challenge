@@ -4,7 +4,7 @@ extend type Query {
 }
 
 extend type Mutation {
-  createUser(username: String!, age: Int!): User
+  createUser(username: String!, age: Int!, password: String!): User
 }
 
 type User {
